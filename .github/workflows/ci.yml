@@ -7,7 +7,7 @@ on:
   pull_request:
   
 
-permission: 
+permissions: 
   contents: red
   packages: write
 

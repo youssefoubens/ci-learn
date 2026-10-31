@@ -21,3 +21,10 @@ jobs:
 
       - name: Run CI script
         run: ./scripts/ci.sh
+
+      - name: create docker image 
+        run: docker build -t ci-learn:${{ github.sha}} .
+
+      - name: Run container
+        run: docker run --rm ci-learn:${{ github.sha}}
+

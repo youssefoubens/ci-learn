@@ -1,0 +1,23 @@
+
+
+name: CI
+
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: action/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run CI script
+        run: ./scripts/ci.sh
+

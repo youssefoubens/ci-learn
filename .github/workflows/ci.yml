@@ -34,8 +34,19 @@ jobs:
       - name: build docker image 
         run: docker build -t $IMAGE:${{ github.sha}} .
 
-      - name: Run container
-        run: docker run --rm $IMAGE:${{ github.sha}}
+       - name: Smoke test the container
+        run: |
+          docker run -d --name smoke -p 3000:3000 $IMAGE:${{ github.sha }}
+          for i in $(seq 1 10); do
+            if curl --fail --silent http://localhost:3000/health; then
+              docker rm -f smoke
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "App did not become health"
+          docker logs smoke
+          exit 1
 
       - name: log in to GHCR 
         if: github.event_name == 'push'

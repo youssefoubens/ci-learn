@@ -9,6 +9,8 @@ RUN npm ci --omit=dev
 
 COPY src/ ./src/
 
-CMD ["node","src/index.js"]
+EXPOSE 3000
+
+CMD ["node","src/server.js"]
 
 

@@ -20,7 +20,7 @@ const server = http.createServer((req, res) => {
   }
 
   res.writeHead(200);
-  res.end(`Hello from ci-learn! Served by: ${os.hostname()}\n`);
+  res.end(`Hello world version 2 from ci-learn! Served by: ${os.hostname()}\n`);
 });
 
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`));

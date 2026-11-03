@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: ghcr.io/youssefoubens/ci-learn:latest
+          image: ghcr.io/youssefoubens/ci-learn:$SHA
           ports:
             - containerPort: 3000
           readinessProbe:
